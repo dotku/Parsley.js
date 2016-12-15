@@ -446,6 +446,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
         if (!this.validateMultiple) throw 'Validator `' + this.name + '` does not handle multiple values';
         return this.validateMultiple.apply(this, arguments);
       } else {
+
         if (this.validateNumber) {
           if (isNaN(value)) return false;
           arguments[0] = parseFloat(arguments[0]);

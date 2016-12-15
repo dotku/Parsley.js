@@ -311,6 +311,9 @@ ParsleyValidatorRegistry.prototype = {
       priority: 30
     },
     min: {
+      validateDate: function (value, requirement) {
+        return value >= requirement;
+      },
       validateNumber: function (value, requirement) {
         return value >= requirement;
       },
@@ -318,6 +321,9 @@ ParsleyValidatorRegistry.prototype = {
       priority: 30
     },
     max: {
+      validateDate: function(value, requirement) {
+        return value <= requirement;
+      },
       validateNumber: function (value, requirement) {
         return value <= requirement;
       },
@@ -325,6 +331,9 @@ ParsleyValidatorRegistry.prototype = {
       priority: 30
     },
     range: {
+      validateDate: function(value, min, max) {
+        return value >= min && value <= max;
+      },
       validateNumber: function (value, min, max) {
         return value >= min && value <= max;
       },
