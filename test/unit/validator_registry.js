@@ -52,6 +52,14 @@ describe('ParsleyValidatorRegistry', () => {
     expectValidation('foo.bar@bar.baz',     'type', 'email').to.be(true);
     expectValidation('foo.bar@bar.com.ext', 'type', 'email').to.be(true);
   });
+  it('should have a type="date" validator', () => {
+    expectValidation('',                    'type', 'date').not.to.be(true);
+    expectValidation('foo',                 'type', 'date').not.to.be(true);
+    expectValidation('12',                  'type', 'date').not.to.be(true);
+    expectValidation('2001-01-30',          'type', 'date').to.be(true);
+    expectValidation('2001-02-30',          'type', 'date').not.to.be(true);
+    expectValidation('2001-30-01',          'type', 'date').not.to.be(true);
+  });
   it('should have a min validator', () => {
     expectValidation('',    'min',6).not.to.be(true);
     expectValidation('foo', 'min',6).not.to.be(true);
