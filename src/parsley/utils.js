@@ -102,6 +102,10 @@ var ParsleyUtils = {
     return string.replace(/^\s+|\s+$/g, '');
   },
 
+  parseDate: function(string) {
+
+  },
+
   namespaceEvents: function(events, namespace) {
     events = this.trimString(events || '').split(/\s+/);
     if (!events[0])

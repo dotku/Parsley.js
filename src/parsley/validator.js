@@ -10,6 +10,12 @@ var requirementConverters = {
       throw 'Requirement is not an integer: "' + string + '"';
     return parseInt(string, 10);
   },
+  date: function(string) {
+    var date = ParsleyUtils.parseDate(string);
+    if (!date)
+      throw 'Requirement is not a date: "' + string + '"';
+    return date;
+  }
   number: function(string) {
     if (isNaN(string))
       throw 'Requirement is not a number: "' + string + '"';
@@ -100,6 +106,13 @@ ParsleyValidator.prototype = {
         throw 'Validator `' + this.name + '` does not handle multiple values';
       return this.validateMultiple(...arguments);
     } else {
+      let [..._, instance] = arguments;
+      if (this.validateDate) && (instance._isDateInput()) {
+        arguments[0] = ParsleyUtils.parseDate(arguments[0]);
+        if (!arguments[0])
+          return false;
+        return this.validateDate(...arguments);
+      }
       if (this.validateNumber) {
         if (isNaN(value))
           return false;

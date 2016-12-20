@@ -346,6 +346,11 @@ ParsleyField.prototype = {
     return value;
   },
 
+  _isDateInput: function() {
+    var c = constraintsByName[type];
+    return c && c.requirements[0] === 'date';
+  },
+
   // Internal only.
   // Returns the constraints, grouped by descending priority.
   // The result is thus an array of arrays of constraints.

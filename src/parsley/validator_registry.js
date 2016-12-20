@@ -317,7 +317,7 @@ ParsleyValidatorRegistry.prototype = {
       validateNumber: function (value, requirement) {
         return value >= requirement;
       },
-      requirementType: 'number',
+      requirementType: 'string',
       priority: 30
     },
     max: {
@@ -327,7 +327,7 @@ ParsleyValidatorRegistry.prototype = {
       validateNumber: function (value, requirement) {
         return value <= requirement;
       },
-      requirementType: 'number',
+      requirementType: 'string',
       priority: 30
     },
     range: {
